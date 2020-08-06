@@ -1,6 +1,19 @@
 # totvs-front-js
 
-## Project setup
+## Project Setup Docker
+
+```
+docker-compose build
+docker-compose run api npm install
+```
+
+### run
+```
+$ docker-compose up
+```
+
+## Project Setup terminal
+
 ```
 npm install
 ```
@@ -9,16 +22,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
