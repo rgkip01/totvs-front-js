@@ -1,11 +1,12 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/scss/app.scss'
+import * as moment from 'moment/moment.js'
+import VueMoment from 'vue-moment'
 
-Vue.use(Vuex)
+Vue.use(VueMoment, { moment })
 
 Vue.config.productionTip = false
 
