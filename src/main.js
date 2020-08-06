@@ -3,10 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/scss/app.scss'
-import * as moment from 'moment/moment.js'
-import VueMoment from 'vue-moment'
 
-Vue.use(VueMoment, { moment })
+
+const moment = require('moment')
+require('moment/locale/pt-br')
+
+Vue.use(require('vue-moment'), {
+  moment
+})
+
 
 Vue.config.productionTip = false
 

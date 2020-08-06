@@ -3,19 +3,19 @@
     <div class="section mt-5">
       <h1>Clientes</h1>
       <div class="input-group mb-3">
-        <input type="text" v-model="params" class="form-control" placeholder="Filtrar" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text" v-model="query" class="form-control" placeholder="Filtrar" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
+          <button @click="search()" class="btn btn-outline-secondary" type="button">Button</button>
         </div>
       </div>
 
       <table class="table">
         <thead>
           <tr>
-            <th width="60%">#</th>
-            <th width="60%" @click="orderByName('name')">Nome do Cliente</th>
-            <th width="60%" @click="orderByName('price')">Valor</th>
-            <th width="60%" @click="orderByName('dueDate')">Vencimento</th>
+            <th width="30%">Código Cliente</th>
+            <th width="40%" @click="orderByName('name')">Nome do Cliente</th>
+            <th width="40%" @click="orderByName('price')">Valor</th>
+            <th width="60%" @click="orderByName('dueDate')">Desde</th>
 
           </tr>
         </thead>
@@ -46,7 +46,8 @@ data: () => ({
   price:0,
   dueDate: null,
   params: null,
-  sort: '-'
+  sort: '-',
+  query:''
 }),
 
 async created(){
@@ -54,6 +55,12 @@ async created(){
 },
 
 methods: {
+
+  async search(){
+     await axios.get(process.env.VUE_APP_CORE_URL, { params: {search: this.query }}).then(res => {
+      return this.defaultings = res.data
+    })
+  },
 
   async orderByName(params){
     let query = ''
